@@ -1,0 +1,48 @@
+<div class="container">
+		<div class="row">
+			<h4 class="col-6 mt-15">User Records</h4>
+			<div class="col-6">
+				<button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary" class="float-right mt-15 mb-15">Add New</button>
+			</div>
+		</div>
+		
+
+		<table mat-table [dataSource]="rows" class="mat-elevation-z8 mt-10">
+			<!-- Avatar Column -->
+			<ng-container matColumnDef="avatar">
+				<th mat-header-cell *matHeaderCellDef> Avatar </th>
+				<td mat-cell *matCellDef="let element"> {{element.avatar}} </td>
+			</ng-container>
+
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef> Name </th>
+				<td mat-cell *matCellDef="let element"> {{element.name}} </td>
+			</ng-container>
+
+			<!-- Email Column -->
+			<ng-container matColumnDef="email">
+				<th mat-header-cell *matHeaderCellDef> Email </th>
+				<td mat-cell *matCellDef="let element"> {{element.email}} </td>
+			</ng-container>
+
+			<!-- Experience  Column -->
+			<ng-container matColumnDef="experience">
+				<th mat-header-cell *matHeaderCellDef> Experience</th>
+				<td mat-cell *matCellDef="let element"> {{element.experience}} </td>
+			</ng-container>
+
+			<!-- Action Column -->
+			<ng-container matColumnDef="action">
+				<th mat-header-cell *matHeaderCellDef> Action </th>
+				<td mat-cell *matCellDef="let element" class="action-link">
+					<a (click)="openDialog('Delete',element)" title="Delete">
+						<i class="material-icons icon-red">delete</i>
+					</a>
+				</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		</table>
+</div>
